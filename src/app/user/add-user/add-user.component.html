@@ -1,0 +1,31 @@
+
+<h4>add user</h4>
+
+<form name="form1" #form="ngForm" (ngSubmit)="submit($event)">
+
+<div>
+  <md-input-container>
+    <input mdInput name="name" [(ngModel)]="formObj.name" #field #nameModel="ngModel" minlength="3" maxlength="10" placeholder="name"
+               forbiddenName="dank" required (submit)="$event.preventDefault()">
+  </md-input-container>
+  <span *ngIf="nameModel.invalid && (nameModel.dirty || nameModel.touched)" class="error-text">
+    <span *ngIf="nameModel.errors.required">required</span>
+    <span *ngIf="nameModel.errors.minlength">must be at least 3 chars long</span>
+    <span *ngIf="nameModel.errors.maxlength">max lengh is 10 chars</span>
+    <span *ngIf="nameModel.errors.forbiddenName">name can't contain dank</span>
+  </span>
+</div>
+<div>
+  <md-input-container>
+    <input mdInput name="age" [(ngModel)]="formObj.age" #ageModel="ngModel" required min="20" max="60" placeholder="age" pattern="\d+">
+  </md-input-container>
+  <span *ngIf="ageModel.invalid && (ageModel.dirty || ageModel.touched)" class="error-text">
+    <span *ngIf="ageModel.errors.required">required</span>
+    <span *ngIf="ageModel.errors.pattern">numbers only</span>
+    <span *ngIf="ageModel.errors.min">must be at least 20 years old</span>
+    <span *ngIf="ageModel.errors.max">can't be older than 60</span>
+  </span>
+</div>
+  <button md-button type="button" (click)="cancel()">cancel</button>
+  <button md-button type="button" (click)="addUser()" [disabled]="form.invalid">add</button><br>
+</form>

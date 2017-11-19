@@ -1,0 +1,11 @@
+
+
+export interface IUser {
+  id?: number;
+  name?: string;
+  age?: number;
+  dc?: object;
+}
+
+
+

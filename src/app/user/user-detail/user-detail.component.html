@@ -1,0 +1,9 @@
+
+<a href routerLink="/user">back to users</a>
+<br>
+
+<h4>detail</h4>
+id: {{user.id}}<br>
+name: {{user.name}}<br>
+age: {{user.age}}<br>
+<span *ngIf="user.dc">dc: {{user.dc|json}}</span>
